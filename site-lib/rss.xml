@@ -1,4 +1,135 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[VCF: Where to Focus]]></title><description><![CDATA[Obsidian digital garden]]></description><link>https://vcf.wtf</link><image><url>./https://vcf.wtf/site-lib/media/favicon.png</url><title>VCF: Where to Focus</title><link>https://vcf.wtf</link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 28 Dec 2025 17:53:35 GMT</lastBuildDate><atom:link href="./https://vcf.wtf/site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 28 Dec 2025 17:53:34 GMT</pubDate><copyright><![CDATA[Volkan Özçelik]]></copyright><ttl>60</ttl><dc:creator>Volkan Özçelik</dc:creator><item><title><![CDATA[vSphere Cluster]]></title><description><![CDATA[<a href="./https://vcf.wtf?query=tag:architecture" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#architecture">#architecture</a><br>See also: <a data-href="vCenter Server" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/vcenter-server.html" class="internal-link" target="_self" rel="noopener nofollow">vCenter Server</a>, <a data-href="ESX" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/esx.html" class="internal-link" target="_self" rel="noopener nofollow">ESX</a>, <a data-href="Supervisor Cluster" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/object-model/inventory-objects/supervisor-cluster.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Cluster</a>A vSphere Cluster (or Supervisor Cluster) is a logical grouping of ESX hosts that vCenter treats as a single resource pool and failure domain.
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[VCF: Where to Focus]]></title><description><![CDATA[Obsidian digital garden]]></description><link>https://vcf.wtf</link><image><url>./https://vcf.wtf/site-lib/media/favicon.png</url><title>VCF: Where to Focus</title><link>https://vcf.wtf</link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 28 Dec 2025 17:57:37 GMT</lastBuildDate><atom:link href="./https://vcf.wtf/site-lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 28 Dec 2025 17:57:36 GMT</pubDate><copyright><![CDATA[Volkan Özçelik]]></copyright><ttl>60</ttl><dc:creator>Volkan Özçelik</dc:creator><item><title><![CDATA[Organization]]></title><description><![CDATA[<a href="./https://vcf.wtf?query=tag:tenancy" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#tenancy">#tenancy</a><br>See also: <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a><br><img alt="VCF-Automation-Capabilities-1.webp" src="./https://vcf.wtf/assets/vcf-automation-capabilities-1.webp" target="_self"><br>In <a data-href="VCF Automation" href="./https://vcf.wtf/vcf/control-planes/vcf-automation/vcf-automation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Automation</a>, an Organization is not a technical runtime boundary—It is a business-facing logical entity that defines who is allowed to consume cloud capabilities, under which rules, and with which visibility.An Organization is the top-level administrative boundary.It is used to:
+<br>Group users, <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s, and resources
+<br>Apply policies and <a data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">Governance</a>
+Define ownership and access boundaries
+Support multi-tenant separation
+An organization typically maps to a business unit or tenant.<br>Organizations exist only in <a data-href="VCF Automation" href="./https://vcf.wtf/vcf/control-planes/vcf-automation/vcf-automation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Automation</a>, not in Kubernetes.It is the outermost “contract boundary” for consumption, not execution.An Organization is a logical tenant boundary that groups identity, policy, quotas, visibility, and approval flows for consuming infrastructure and platform services.It answers:
+Who is consuming?
+What are they allowed to consume?
+Under which business rules?
+—not how workloads actually run.
+<br>Because <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a>s are the actual enforcement boundary, a single Organization can define <a data-tooltip-position="top" aria-label="Multi-Tenancy" data-href="Multi-Tenancy" href="./https://vcf.wtf/vcf/concepts/tenancy-in-vcf/multi-tenancy.html" class="internal-link" target="_self" rel="noopener nofollow">multiple tenants</a>.But those “tenants” are operational tenants, not consumption tenants.There are two different kinds of tenancy in VCF:They are deliberately decoupled.<br>A <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a> enforces:
+RBAC
+Resource quotas
+Network isolation
+Storage policies
+Pod security boundaries
+Runtime blast radius
+This is where:
+Kubernetes says “no”
+<br><a data-href="vSphere" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/vsphere.html" class="internal-link" target="_self" rel="noopener nofollow">vSphere</a> enforces limits
+Workloads are actually prevented from crossing boundaries Namespace = hard enforcement boundary
+<br>Organizations define intent and <a data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">Governance</a>.
+An Organization:
+Defines who is allowed to create tenants
+Defines how many tenants
+Defines under which rules
+Defines approval and lifecycle policies
+It’s closer to:
+“Who is allowed to mint isolation boundaries?”
+not:
+“Where isolation happens.”
+A single Organization can own:
+<br>Multiple <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s
+<br>Each <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a> can map to: <br>One <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a>
+Or several namespaces (depending on policy / model) Organization: Acme Corp
+├── Project: Acme-Prod → ns-acme-prod
+├── Project: Acme-Stage → ns-acme-stage
+├── Project: Acme-Dev → ns-acme-dev
+└── Project: Acme-Analytics → ns-acme-analytics
+<br>Each <a data-tooltip-position="top" aria-label="Supervisor Namespace" data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">namespace</a> is a real tenant boundary.But from a business standpoint:
+Acme Corp is still one customer: One billing entity
+One governance envelope
+One policy domain This construct enables the following scenarios (which would have been impossible otherwise).Classic need:
+Dev / Stage / Prod
+Regulated vs non-regulated
+Different trust zones
+All under:
+One contract
+One identity plane
+One catalog
+Example:
+Organization = “Platform Team”
+<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s = internal product teams
+<br><a data-tooltip-position="top" aria-label="Supervisor Namespace" data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Namespace</a>s = per-team isolation
+This would break if Organization == Namespace.Example:
+Organization = External customer
+<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s = customer environments
+<br><a data-tooltip-position="top" aria-label="Supervisor Namespace" data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Namespace</a>s = actual enforcement boundaries
+Same model works for:
+Internal IT
+SaaS providers
+Telco multi-tenant platforms
+If something must be isolated, it must be isolated at the namespace level.Anything above that:
+<br>Is <a data-tooltip-position="top" aria-label="Governance" data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">governance</a>
+Is visibility
+Is policy
+Is economy
+Organizations define who may create tenants; namespaces are the tenants.Similar to:
+AWS Account
+Azure Subscription (with Management Groups layered above)
+GCP Project (with Org/Folder hierarchy)
+But in VCF, it’s explicitly framed as consumption-first, not infrastructure-first.
+Separates consumers (e.g., companies, business units, external customers)
+Enforces isolation in: Identity and Access
+Visibility
+Quotas and Limits
+Chargeback / showback Organizations are where policies attach, such as:
+Who can request what
+Approval workflows
+Budget limits
+Lease durations
+Allowed regions / environments
+Allowed workload types (VM, Kubernetes, services)
+These policies then flow downward.Everything inside an Organization is:
+Visible only to that Organization (unless shared)
+Governed consistently
+This includes:
+<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s
+<br><a data-href="Blueprint" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/blueprint.html" class="internal-link" target="_self" rel="noopener nofollow">Blueprint</a>s / templates
+Catalog items
+Requests
+Cost views
+Organization
+├── Projects
+│ ├── Policies
+│ ├── Quotas
+│ ├── Users / Groups
+│ └── Workload requests
+│
+└── (maps indirectly to) └── Cloud Zones └── Infrastructure (vSphere, Supervisor, VKS, etc.) Infrastructure never belongs to an Organization
+Consumption always does
+Organization deliberately hides the infrastructure topology.From the Organization’s point of view:
+<br>There is no <a data-href="ESX" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/esx.html" class="internal-link" target="_self" rel="noopener nofollow">ESX</a>
+No cluster
+No datastore
+<br>No <a data-href="vSphere Supervisor" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/vsphere-supervisor.html" class="internal-link" target="_self" rel="noopener nofollow">vSphere Supervisor</a>
+There is only:
+“What can I request?”
+“What am I allowed to use?”
+“Who approves this?”
+“How much does it cost?”
+This abstraction enables:
+<br><a data-tooltip-position="top" aria-label="Multi-Tenancy" data-href="Multi-Tenancy" href="./https://vcf.wtf/vcf/concepts/tenancy-in-vcf/multi-tenancy.html" class="internal-link" target="_self" rel="noopener nofollow">Multi-tenant</a> platforms
+Internal private clouds
+Managed services
+<br>SaaS-like experience on top of <a data-tooltip-position="top" aria-label="VMware Cloud Foundation" data-href="VMware Cloud Foundation" href="./https://vcf.wtf/vcf/vmware-cloud-foundation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF</a>
+If Organization is “who is the customer”,<br>
+then <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a> is “what they are working on”.Typical mapping:Organization: Acme Corp
+├── Project: Acme-Prod
+├── Project: Acme-Stage
+└── Project: Acme-Dev
+<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s:
+Scope quotas
+Bind to cloud zones
+<br>Eventually map to <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a>s or runtime constructs
+Organizations never do.
+<br>Organization = <a data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">Governance</a> + visibility
+It exists to model consumption, not execution
+It owns policy, identity, and economics
+It deliberately abstracts away infrastructure
+<br>Everything technical happens below it, via <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s and Cloud Zones
+<br>Check <a data-href="IaaS" href="./https://vcf.wtf/vcf/concepts/background-and-context/iaas.html" class="internal-link" target="_self" rel="noopener nofollow">IaaS</a> as a concept, or jump back to <a data-href="VMware Cloud Foundation" href="./https://vcf.wtf/vcf/vmware-cloud-foundation.html" class="internal-link" target="_self" rel="noopener nofollow">VMware Cloud Foundation</a>.]]></description><link>./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/organization.html</link><guid isPermaLink="false">VCF/Concepts/Design and Abstractions/Consumption Abstractions/Organization.md</guid><dc:creator><![CDATA[Volkan Özçelik]]></dc:creator><pubDate>Sun, 28 Dec 2025 17:57:29 GMT</pubDate><enclosure url="./https://vcf.wtf/assets/vcf-automation-capabilities-1.webp" length="0" type="image/webp"/><content:encoded>&lt;figure&gt;&lt;img src="./https://vcf.wtf/assets/vcf-automation-capabilities-1.webp"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[vSphere Cluster]]></title><description><![CDATA[<a href="./https://vcf.wtf?query=tag:architecture" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#architecture">#architecture</a><br>See also: <a data-href="vCenter Server" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/vcenter-server.html" class="internal-link" target="_self" rel="noopener nofollow">vCenter Server</a>, <a data-href="ESX" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/esx.html" class="internal-link" target="_self" rel="noopener nofollow">ESX</a>, <a data-href="Supervisor Cluster" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/object-model/inventory-objects/supervisor-cluster.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Cluster</a>A vSphere Cluster (or Supervisor Cluster) is a logical grouping of ESX hosts that vCenter treats as a single resource pool and failure domain.
 <br>It exists only in <a data-tooltip-position="top" aria-label="vCenter Server" data-href="vCenter Server" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/vcenter-server.html" class="internal-link" target="_self" rel="noopener nofollow">vCenter</a>.
 <br><a data-href="ESX" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/esx.html" class="internal-link" target="_self" rel="noopener nofollow">ESX</a> hosts do not know they are “in a cluster”.
 When you create a cluster in vCenter Server, you are telling:
@@ -3143,138 +3274,7 @@ It governs who can deploy what, where, and how
 It sits above infrastructure and below the organization
 It is the unit of consumption for developers and teams
 <br>It enables <a data-href="Multi-Tenancy" href="./https://vcf.wtf/vcf/concepts/tenancy-in-vcf/multi-tenancy.html" class="internal-link" target="_self" rel="noopener nofollow">Multi-Tenancy</a>, <a data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">Governance</a>, and self-service
-<br>You might want to check out <a data-href="Blueprint" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/blueprint.html" class="internal-link" target="_self" rel="noopener nofollow">Blueprint</a>s.]]></description><link>./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html</link><guid isPermaLink="false">VCF/Concepts/Design and Abstractions/Consumption Abstractions/Project.md</guid><dc:creator><![CDATA[Volkan Özçelik]]></dc:creator><pubDate>Sun, 28 Dec 2025 15:14:05 GMT</pubDate></item><item><title><![CDATA[Organization]]></title><description><![CDATA[<a href="./https://vcf.wtf?query=tag:tenancy" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#tenancy">#tenancy</a><br>See also: <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a><br><img alt="VCF-Automation-Capabilities-1.webp" src="./https://vcf.wtf/assets/vcf-automation-capabilities-1.webp" target="_self"><br>In <a data-href="VCF Automation" href="./https://vcf.wtf/vcf/control-planes/vcf-automation/vcf-automation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Automation</a>, an Organization is not a technical runtime boundary—It is a business-facing logical entity that defines who is allowed to consume cloud capabilities, under which rules, and with which visibility.An Organization is the top-level administrative boundary.It is used to:
-<br>Group users, <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s, and resources
-<br>Apply policies and <a data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">Governance</a>
-Define ownership and access boundaries
-Support multi-tenant separation
-An organization typically maps to a business unit or tenant.<br>Organizations exist only in <a data-href="VCF Automation" href="./https://vcf.wtf/vcf/control-planes/vcf-automation/vcf-automation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Automation</a>, not in Kubernetes.It is the outermost “contract boundary” for consumption, not execution.An Organization is a logical tenant boundary that groups identity, policy, quotas, visibility, and approval flows for consuming infrastructure and platform services.It answers:
-Who is consuming?
-What are they allowed to consume?
-Under which business rules?
-—not how workloads actually run.
-<br>Because <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a>s are the actual enforcement boundary, a single Organization can define <a data-tooltip-position="top" aria-label="Multi-Tenancy" data-href="Multi-Tenancy" href="./https://vcf.wtf/vcf/concepts/tenancy-in-vcf/multi-tenancy.html" class="internal-link" target="_self" rel="noopener nofollow">multiple tenants</a>.But those “tenants” are operational tenants, not consumption tenants.There are two different kinds of tenancy in VCF:They are deliberately decoupled.<br>A <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a> enforces:
-RBAC
-Resource quotas
-Network isolation
-Storage policies
-Pod security boundaries
-Runtime blast radius
-This is where:
-Kubernetes says “no”
-<br><a data-href="vSphere" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/vsphere.html" class="internal-link" target="_self" rel="noopener nofollow">vSphere</a> enforces limits
-Workloads are actually prevented from crossing boundaries Namespace = hard enforcement boundary
-<br>Organizations define intent and <a data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">Governance</a>.
-An Organization:
-Defines who is allowed to create tenants
-Defines how many tenants
-Defines under which rules
-Defines approval and lifecycle policies
-It’s closer to:
-“Who is allowed to mint isolation boundaries?”
-not:
-“Where isolation happens.”
-A single Organization can own:
-<br>Multiple <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s
-<br>Each <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a> can map to: <br>One <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a>
-Or several namespaces (depending on policy / model) Organization: Acme Corp
-├── Project: Acme-Prod → ns-acme-prod
-├── Project: Acme-Stage → ns-acme-stage
-├── Project: Acme-Dev → ns-acme-dev
-└── Project: Acme-Analytics → ns-acme-analytics
-<br>Each <a data-tooltip-position="top" aria-label="Supervisor Namespace" data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">namespace</a> is a real tenant boundary.But from a business standpoint:
-Acme Corp is still one customer: One billing entity
-One governance envelope
-One policy domain This construct enables the following scenarios (which would have been impossible otherwise).Classic need:
-Dev / Stage / Prod
-Regulated vs non-regulated
-Different trust zones
-All under:
-One contract
-One identity plane
-One catalog
-Example:
-Organization = “Platform Team”
-<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s = internal product teams
-<br><a data-tooltip-position="top" aria-label="Supervisor Namespace" data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Namespace</a>s = per-team isolation
-This would break if Organization == Namespace.Example:
-Organization = External customer
-<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s = customer environments
-<br><a data-tooltip-position="top" aria-label="Supervisor Namespace" data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Namespace</a>s = actual enforcement boundaries
-Same model works for:
-Internal IT
-SaaS providers
-Telco multi-tenant platforms
-If something must be isolated, it must be isolated at the namespace level.Anything above that:
-<br>Is <a data-tooltip-position="top" aria-label="Governance" data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">governance</a>
-Is visibility
-Is policy
-Is economy
-Organizations define who may create tenants; namespaces are the tenants.Similar to:
-AWS Account
-Azure Subscription (with Management Groups layered above)
-GCP Project (with Org/Folder hierarchy)
-But in VCF, it’s explicitly framed as consumption-first, not infrastructure-first.
-Separates consumers (e.g., companies, business units, external customers)
-Enforces isolation in: Identity and Access
-Visibility
-Quotas and Limits
-Chargeback / showback Organizations are where policies attach, such as:
-Who can request what
-Approval workflows
-Budget limits
-Lease durations
-Allowed regions / environments
-Allowed workload types (VM, Kubernetes, services)
-These policies then flow downward.Everything inside an Organization is:
-Visible only to that Organization (unless shared)
-Governed consistently
-This includes:
-<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s
-<br><a data-href="Blueprint" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/blueprint.html" class="internal-link" target="_self" rel="noopener nofollow">Blueprint</a>s / templates
-Catalog items
-Requests
-Cost views
-Organization
-├── Projects
-│ ├── Policies
-│ ├── Quotas
-│ ├── Users / Groups
-│ └── Workload requests
-│
-└── (maps indirectly to) └── Cloud Zones └── Infrastructure (vSphere, Supervisor, VKS, etc.) Infrastructure never belongs to an Organization
-Consumption always does
-Organization deliberately hides the infrastructure topology.From the Organization’s point of view:
-<br>There is no <a data-href="ESX" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/core-components/esx.html" class="internal-link" target="_self" rel="noopener nofollow">ESX</a>
-No cluster
-No datastore
-<br>No <a data-href="vSphere Supervisor" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/vsphere-supervisor.html" class="internal-link" target="_self" rel="noopener nofollow">vSphere Supervisor</a>
-There is only:
-“What can I request?”
-“What am I allowed to use?”
-“Who approves this?”
-“How much does it cost?”
-This abstraction enables:
-<br><a data-tooltip-position="top" aria-label="Multi-Tenancy" data-href="Multi-Tenancy" href="./https://vcf.wtf/vcf/concepts/tenancy-in-vcf/multi-tenancy.html" class="internal-link" target="_self" rel="noopener nofollow">Multi-tenant</a> platforms
-Internal private clouds
-Managed services
-<br>SaaS-like experience on top of <a data-tooltip-position="top" aria-label="VMware Cloud Foundation" data-href="VMware Cloud Foundation" href="./https://vcf.wtf/vcf/vmware-cloud-foundation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF</a>
-If Organization is “who is the customer”,<br>
-then <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a> is “what they are working on”.Typical mapping:Organization: Acme Corp
-├── Project: Acme-Prod
-├── Project: Acme-Stage
-└── Project: Acme-Dev
-<br><a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s:
-Scope quotas
-Bind to cloud zones
-<br>Eventually map to <a data-href="Supervisor Namespace" href="./https://vcf.wtf/vcf/core-runtimes/vsphere/platform-extensions/vsphere-supervisor/supervisor-internals-and-platform-integration/control-and-consumption/supervisor-namespace.html" class="internal-link" target="_self" rel="noopener nofollow">Supervisor Namespace</a>s or runtime constructs
-Organizations never do.
-<br>Organization = <a data-href="Governance" href="./https://vcf.wtf/vcf/concepts/governance-and-compliance/governance.html" class="internal-link" target="_self" rel="noopener nofollow">Governance</a> + visibility
-It exists to model consumption, not execution
-It owns policy, identity, and economics
-It deliberately abstracts away infrastructure
-<br>Everything technical happens below it, via <a data-href="Project" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html" class="internal-link" target="_self" rel="noopener nofollow">Project</a>s and Cloud Zones
-<br>Check <a data-href="IaaS" href="./https://vcf.wtf/vcf/concepts/background-and-context/iaas.html" class="internal-link" target="_self" rel="noopener nofollow">IaaS</a> as a concept, or jump back to <a data-href="VMware Cloud Foundation" href="./https://vcf.wtf/vcf/vmware-cloud-foundation.html" class="internal-link" target="_self" rel="noopener nofollow">VMware Cloud Foundation</a>.]]></description><link>./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/organization.html</link><guid isPermaLink="false">VCF/Concepts/Design and Abstractions/Consumption Abstractions/Organization.md</guid><dc:creator><![CDATA[Volkan Özçelik]]></dc:creator><pubDate>Sun, 28 Dec 2025 15:09:34 GMT</pubDate><enclosure url="./https://vcf.wtf/assets/vcf-automation-capabilities-1.webp" length="0" type="image/webp"/><content:encoded>&lt;figure&gt;&lt;img src="./https://vcf.wtf/assets/vcf-automation-capabilities-1.webp"&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Blueprint]]></title><description><![CDATA[<a href="./https://vcf.wtf?query=tag:governance" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#governance">#governance</a> <a href="./https://vcf.wtf?query=tag:lifecycle" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#lifecycle">#lifecycle</a>A Blueprint is a declarative deployment template that defines what can be requested, how it is configured, where it may land, and under which policies and approvals.<br>A&nbsp;<a data-href="VMware Cloud Foundation" href="./https://vcf.wtf/vcf/vmware-cloud-foundation.html" class="internal-link" target="_self" rel="noopener nofollow">VMware Cloud Foundation</a> Design <a data-href="Blueprint" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/blueprint.html" class="internal-link" target="_self" rel="noopener nofollow">Blueprint</a> is a prescriptive end-to-end design for a&nbsp;VCF <a data-tooltip-position="top" aria-label="Fleet Management" data-href="Fleet Management" href="./https://vcf.wtf/vcf/control-planes/vcf-operations/platform-operations-and-services/platform-services-and-management/managing-the-cloud/fleet-management.html" class="internal-link" target="_self" rel="noopener nofollow">Fleet</a> in a commonly requested architecture topology, created to help accelerate time to value when building a new&nbsp;VMware Cloud Foundation platform.A Blueprint has a prescriptive selection of deployment models chosen from the design library to conform to the design profile of the&nbsp;Blueprint.A Blueprint can be deployed as is, with no alterations, or can be used as template where any of the deployment models can be substituted for alternatives from the same category within the design library.&nbsp;<br>A Blueprint reflects the initial deployment of a&nbsp;<a data-tooltip-position="top" aria-label="Fleet Management" data-href="Fleet Management" href="./https://vcf.wtf/vcf/control-planes/vcf-operations/platform-operations-and-services/platform-services-and-management/managing-the-cloud/fleet-management.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Fleet</a> and supports expansion in a variety of ways to support the needs of your organization.A Blueprint provides a set of planning, implementation and design elements (requirements and recommendations) based on the chosen deployment models.<br>Blueprints in <a data-href="VCF Automation" href="./https://vcf.wtf/vcf/control-planes/vcf-automation/vcf-automation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Automation</a> are governed deployment templates that define allowed workload patterns, configuration inputs, placement constraints, and approval policies. They orchestrate resource creation but are not part of the runtime execution layer.Once a deployment is created, the Blueprint can be deleted and the workload keeps running: It’s not a part of the runtime layer.User ↓
+<br>You might want to check out <a data-href="Blueprint" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/blueprint.html" class="internal-link" target="_self" rel="noopener nofollow">Blueprint</a>s.]]></description><link>./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/project.html</link><guid isPermaLink="false">VCF/Concepts/Design and Abstractions/Consumption Abstractions/Project.md</guid><dc:creator><![CDATA[Volkan Özçelik]]></dc:creator><pubDate>Sun, 28 Dec 2025 15:14:05 GMT</pubDate></item><item><title><![CDATA[Blueprint]]></title><description><![CDATA[<a href="./https://vcf.wtf?query=tag:governance" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#governance">#governance</a> <a href="./https://vcf.wtf?query=tag:lifecycle" class="tag is-unresolved" target="_self" rel="noopener nofollow" data-href="#lifecycle">#lifecycle</a>A Blueprint is a declarative deployment template that defines what can be requested, how it is configured, where it may land, and under which policies and approvals.<br>A&nbsp;<a data-href="VMware Cloud Foundation" href="./https://vcf.wtf/vcf/vmware-cloud-foundation.html" class="internal-link" target="_self" rel="noopener nofollow">VMware Cloud Foundation</a> Design <a data-href="Blueprint" href="./https://vcf.wtf/vcf/concepts/design-and-abstractions/consumption-abstractions/blueprint.html" class="internal-link" target="_self" rel="noopener nofollow">Blueprint</a> is a prescriptive end-to-end design for a&nbsp;VCF <a data-tooltip-position="top" aria-label="Fleet Management" data-href="Fleet Management" href="./https://vcf.wtf/vcf/control-planes/vcf-operations/platform-operations-and-services/platform-services-and-management/managing-the-cloud/fleet-management.html" class="internal-link" target="_self" rel="noopener nofollow">Fleet</a> in a commonly requested architecture topology, created to help accelerate time to value when building a new&nbsp;VMware Cloud Foundation platform.A Blueprint has a prescriptive selection of deployment models chosen from the design library to conform to the design profile of the&nbsp;Blueprint.A Blueprint can be deployed as is, with no alterations, or can be used as template where any of the deployment models can be substituted for alternatives from the same category within the design library.&nbsp;<br>A Blueprint reflects the initial deployment of a&nbsp;<a data-tooltip-position="top" aria-label="Fleet Management" data-href="Fleet Management" href="./https://vcf.wtf/vcf/control-planes/vcf-operations/platform-operations-and-services/platform-services-and-management/managing-the-cloud/fleet-management.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Fleet</a> and supports expansion in a variety of ways to support the needs of your organization.A Blueprint provides a set of planning, implementation and design elements (requirements and recommendations) based on the chosen deployment models.<br>Blueprints in <a data-href="VCF Automation" href="./https://vcf.wtf/vcf/control-planes/vcf-automation/vcf-automation.html" class="internal-link" target="_self" rel="noopener nofollow">VCF Automation</a> are governed deployment templates that define allowed workload patterns, configuration inputs, placement constraints, and approval policies. They orchestrate resource creation but are not part of the runtime execution layer.Once a deployment is created, the Blueprint can be deleted and the workload keeps running: It’s not a part of the runtime layer.User ↓
 Blueprint ← governance + intent ↓
 Project ← who / where / policy ↓
 Supervisor Namespace ↓
