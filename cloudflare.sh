@@ -23,11 +23,11 @@ find "$DIR" -type f -name "*.html" ! -name "*.html.html" | while read -r file; d
     echo "Renamed: $file → ${file}.html"
 done
 
-# Fix metadata.json paths to match CloudFlare URLs
-sed -i 's/\.html"/"/' site-lib/metadata.json
-
-# Same for search index if needed
-sed -i 's/\.html"/"/' site-lib/search-index.json
+## Fix metadata.json paths to match CloudFlare URLs
+#sed -i 's/\.html"/"/' site-lib/metadata.json
+#
+## Same for search index if needed
+#sed -i 's/\.html"/"/' site-lib/search-index.json
 
 echo "Done!"
 
