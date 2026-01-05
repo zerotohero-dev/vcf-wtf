@@ -19,7 +19,7 @@ DIR="${1:-.}"
 
 # Find all .html files (excluding already doubled ones)
 find "$DIR" -type f -name "*.html" ! -name "*.html.html" | while read -r file; do
-    cp "$file" "${file}.html"
+    mv "$file" "${file}.html"
     echo "Renamed: $file → ${file}.html"
 done
 
