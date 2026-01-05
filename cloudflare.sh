@@ -31,6 +31,8 @@ done
 
 echo "Done!"
 
+cp index.html.html index.html
+
 ## Find all .html files, restructure into directories
 # This will not work because of internal links.
 #find "$DIR" -type f -name "*.html" ! -name "index.html" | while read -r file; do
